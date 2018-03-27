@@ -1,0 +1,139 @@
+// This stylesheet is written in BEM with sass
+//
+// Block = .block
+// Element = .block__element
+// Modifier = .block__element--modifier  / .block--modifier
+$mobile: new-breakpoint(max-width 360px);
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  @include margin(0); //Add-ons by Bourbon (voir doc)
+  @include padding(0); //Add-ons by Bourbon (voir doc)
+  background-color: LaCouleurDe(fond,clair); //Function on 2-modules/_colors
+  direction: ltr;
+}
+
+.full-page {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  height: 100% !important;
+  @include element(position){ //Syntax of BEM with mixin of sass 1-base/mixins.sass
+    display: table-row;
+  }
+}
+
+.full-page__position-align{
+      display: table-cell;
+      float: none;
+      vertical-align: middle !important;
+}
+
+.block-one {
+  @include margin(-100px auto 0 auto);
+  width: 100%;
+  text-align: center !important;
+    @include element(error-number){ //Syntax of BEM with mixin of sass 1-base/mixins.sass
+    font-family: "Montserrat";
+    font-size: LaPoliceDe(taille,grand); //Function on 2-modules/_fonts
+    line-height: 90px;
+    color: LaCouleurDe(texte,sombre); //Function on 2-modules/_colors
+  }
+}
+
+.block-one--error-message{
+  font-size: LaPoliceDe(taille,moyen);
+  line-height: 40px;
+  font-weight: LaPoliceDe(aspect,gras) !important;
+  @include margin(10px 0);
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: LaCouleurDe(texte,sombre);
+}
+
+.block-one--paragraph{
+  display: block;
+  font-size: LaPoliceDe(taille,debase);
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  line-height: 22px;
+  @include margin(0 0 10px 0);
+  font-style: LaPoliceDe(style,debase);
+  white-space: normal;
+  color: LaCouleurDe(texte,debase);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.block-one--link{
+  text-decoration: none;
+  color: LaCouleurDe(lien,sombre);
+  &:hover {
+    color: LaCouleurDe(lien,clair);
+  }
+}
+
+.block-two {
+  @include margin(0 auto 0 auto);
+  width: 360px;
+  background-color: LaCouleurDe(fond,clair);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 2px;
+  @include media($mobile) {
+    width: auto !important;
+    @include margin(0 10px);
+}
+}
+
+.block-two__form {
+  display: inline-block;
+}
+
+label {
+  display: block;
+  margin-left: 10px;
+  @include padding(10px 0 2px 0);
+  font-family: "Montserrat";
+  font-size: LaPoliceDe(taille,debase);
+  text-transform: uppercase;
+  font-weight: LaPoliceDe(aspect,gras);
+  color: LaCouleurDe(texte,debase);
+}
+
+.block-two__form__input{
+  margin-left: 10px;
+  border: none;
+  @include size(300px 25px); //Add-ons size by Bourbon (voir doc) width-height
+  min-height: 25px;
+  padding: 0;
+  line-height: normal;
+  font-size: LaPoliceDe(taille,debase);
+  font-weight: LaPoliceDe(aspect,debase);
+  vertical-align: middle;
+  letter-spacing: 0.01em;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: LaCouleurDe(texte,clair);
+  background-color: LaCouleurDe(fond,clair);
+  &:focus {
+    color: LaCouleurDe(texte,debase)!important;
+  }
+  @include media($mobile) {
+    width: 200px !important;;
+}
+}
+
+.icon--search {
+  float: right;
+  padding-top: 15px;
+  border-radius: 0;
+  border: none;
+  min-width: calc(39px);
+  color: LaCouleurDe(texte,clair);
+  &:focus {
+    color: LaCouleurDe(fond,debase);
+  }
+}
